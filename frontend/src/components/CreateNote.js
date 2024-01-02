@@ -71,10 +71,9 @@ export default function CreateNote() {
             const newNote = { title, content, date, author: userSelected }
             try{
                 const res = (editing) ? await axios.put(`${ServerUrl}/notes/${location}`, newNote) : await axios.post(`${ServerUrl}/notes/`, newNote)
-                console.log(res)
             }
             catch(err){
-                console.log(err)
+                console.log('error...')
             }
         }
         navigate('/')
@@ -90,7 +89,7 @@ export default function CreateNote() {
             <div className="card card-body">
                 <h4>Create a Note</h4>
                 <div className="form-group">
-                <select className="form-control" onChange={OnUserChange} name="User"><option value={userSelected || ""}>{userSelected || '(select an user)'}</option>{users.map(u => (<option key={u.id} value={u.username}>{u.username}</option>))}</select>
+                <select className="form-control" onChange={OnUserChange} name="User"><option value={userSelected || ""}>{userSelected || '(select an user)'}</option>{users.map((u, i) => (<option key={i} value={u.username}>{u.username}</option>))}</select>
                 <p className="notProvied">{(notUserSelected) ? 'No user provied' : ''}</p>
                 </div>
 

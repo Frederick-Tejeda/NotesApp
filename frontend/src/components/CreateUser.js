@@ -71,8 +71,8 @@ export default function CreateUser(){
             </div>
             <div className="col-md-8">
                 <ul className="list-group" style={{height: '80vh', overflowY: 'auto'}}>
-                    {users.map(user => (
-                        <li className="list-group-item list-group-item-action" key={user.id} onDoubleClick={() => deleteUser(user._id)}>
+                    {users.map((user, i) => (
+                        <li className="list-group-item list-group-item-action" key={i} onDoubleClick={() => deleteUser(user._id)}>
                             {user.username}
                         </li>))
                     }
