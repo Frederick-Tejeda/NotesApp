@@ -5,6 +5,8 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import {useLocation, useNavigate} from 'react-router-dom'
 
+const ServerUrl = "https://notesapp-mbls.onrender.com"
+
 export default function CreateNote() {
 
     const [users, setUsers] = useState([])
@@ -35,7 +37,7 @@ export default function CreateNote() {
     const GetNote = async () => {
     setEditing((location.search('create') === -1) ? true : false)
     try{
-    const res = await axios.get('http://localhost:4000/notes/' + location)
+    const res = await axios.get(`${ServerUrl}/notes/${location}`)
     setTitle(res.data.title)
     setContent(res.data.title)
     setUserSelected(res.data.author)
@@ -47,7 +49,7 @@ export default function CreateNote() {
 
     const fecthingData = async () => {
         try{
-            const res = await axios.get('http://localhost:4000/users/')
+            const res = await axios.get(`${ServerUrl}/users/`)
             setUsers(res.data)
         }
         catch(err){
@@ -68,7 +70,7 @@ export default function CreateNote() {
             setNotUserSelected(false);
             const newNote = { title, content, date, author: userSelected }
             try{
-                const res = (editing) ? await axios.put('http://localhost:4000/notes/' + location, newNote) : await axios.post('http://localhost:4000/notes/', newNote)
+                const res = (editing) ? await axios.put(`${ServerUrl}/notes/${location}`, newNote) : await axios.post(`${ServerUrl}/notes/`, newNote)
                 console.log(res)
             }
             catch(err){

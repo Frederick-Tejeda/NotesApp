@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 
+const ServerUrl = "https://notesapp-mbls.onrender.com"
+
 export default function CreateUser(){
 
     const [users, setUsers] = useState([])
@@ -13,7 +15,7 @@ export default function CreateUser(){
 
     const fetchingData = async () => {
         try{
-            const res = await axios.get('http://localhost:4000/users/')
+            const res = await axios.get(`${ServerUrl}/users/`)
             setUsers(res.data)
         }
         catch(err){
@@ -24,7 +26,7 @@ export default function CreateUser(){
     const onChangeUsername = (e) => setUsername(e.target.value);
 
     const verifyingUser = async () => {
-        const userAllready = await axios.get("http://localhost:4000/users")
+        const userAllready = await axios.get(`${ServerUrl}/users`)
         if(userAllready.data.find((u) => u.username === username) === undefined){
         return false
         }
@@ -36,7 +38,7 @@ export default function CreateUser(){
         usingUser = await verifyingUser()
         if(!usingUser){
             try{
-                await axios.post("http://localhost:4000/users", {username})
+                await axios.post(`${ServerUrl}/users`, {username})
                 setUsername('')
                 fetchingData()
             }
@@ -47,7 +49,7 @@ export default function CreateUser(){
     }
 
     const deleteUser = async (id) => {
-       await axios.delete("http://localhost:4000/users/" + id)
+       await axios.delete(`${ServerUrl}/users/${id}`)
        fetchingData()
     }
 

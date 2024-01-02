@@ -2,8 +2,7 @@ require('dotenv').config()
 
 const mongoose = require('mongoose')
 
-const URL = process.env.MONGODB_URL || 'mongodb://localhost/FirstMern'
-console.log('URL', URL)
+const URL = process.env.MONGODB_URL
 
 mongoose.connect(URL, {})
 

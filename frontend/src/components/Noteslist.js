@@ -3,6 +3,8 @@ import axios from 'axios'
 import {format} from 'timeago.js'
 import {Link, useLocation} from 'react-router-dom'
 
+const ServerUrl = "https://notesapp-mbls.onrender.com"
+
 export default function Noteslist() {
 
     const [notes, setNotes] = useState([])
@@ -14,7 +16,7 @@ export default function Noteslist() {
 
     const fetchingData = async () => {
         try{
-            const res = await axios.get('http://localhost:4000/notes/')
+            const res = await axios.get(`${ServerUrl}/notes/`)
             setNotes(res.data)
         }
         catch(err){
@@ -22,7 +24,7 @@ export default function Noteslist() {
         }
     }
 
-    const DeleteNote = async (e) => {await axios.delete('http://localhost:4000/notes/' + e); fetchingData()}
+    const DeleteNote = async (e) => {await axios.delete(`${ServerUrl}/notes/${e}`); fetchingData()}
 
     return (
         <div className="row">

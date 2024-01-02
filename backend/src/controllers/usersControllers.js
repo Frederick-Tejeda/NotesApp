@@ -3,7 +3,7 @@ const User = require('../models/user')
 
 controller.getUsers = async (req, res) => {
     const users = await User.find()
-    res.json((users.length == 0) ? {"message": 'It seems that is empty...'} : users)
+    res.json((users.length == 0) ? [] : users)
 }
 
 controller.createUser = async (req, res) => {
@@ -15,7 +15,7 @@ controller.createUser = async (req, res) => {
 
 controller.getUser = async (req, res) => {
     const user = await User.findById(req.params.id)
-    res.json((user == null) ? {"message": "It seems that doesn't exist..."} : {"You are looking for": user})
+    res.json((user == null) ? [] : user)
 }
 
 controller.updateUser = async (req, res) => {
