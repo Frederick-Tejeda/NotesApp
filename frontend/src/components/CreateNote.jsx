@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import '../index.css';
 import axios from 'axios'
 import DatePicker from 'react-datepicker'
@@ -26,24 +26,24 @@ export default function CreateNote() {
 
     useEffect(() => {
        if(location !== '/create/'){
-        GetNote()
-        fecthingData()
+            GetNote()
+            fecthingData()
         }
         else{
-        fecthingData()
+            fecthingData()
         }
     }, [])
 
     const GetNote = async () => {
-    setEditing((location.search('create') === -1) ? true : false)
+        setEditing((location.search('create') === -1) ? true : false)
     try{
-    const res = await axios.get(`${ServerUrl}/notes/${location}`)
-    setTitle(res.data.title)
-    setContent(res.data.title)
-    setUserSelected(res.data.author)
+        const res = await axios.get(`${ServerUrl}/notes/${location}`)
+        setTitle(res.data.title)
+        setContent(res.data.title)
+        setUserSelected(res.data.author)
     }
     catch(err){
-    console.log(err)
+        console.log(err)
     }
     }
 
@@ -70,7 +70,7 @@ export default function CreateNote() {
             setNotUserSelected(false);
             const newNote = { title, content, date, author: userSelected }
             try{
-                const res = (editing) ? await axios.put(`${ServerUrl}/notes/${location}`, newNote) : await axios.post(`${ServerUrl}/notes/`, newNote)
+                (editing) ? await axios.put(`${ServerUrl}/notes/${location}`, newNote) : await axios.post(`${ServerUrl}/notes/`, newNote)
             }
             catch(err){
                 console.log('error...')

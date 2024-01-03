@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
-import {format} from 'timeago.js'
-import {Link, useLocation} from 'react-router-dom'
+import { format } from 'timeago.js'
+import { Link } from 'react-router-dom'
 
 const ServerUrl = "https://notesapp-mbls.onrender.com"
 

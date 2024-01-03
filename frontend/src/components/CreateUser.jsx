@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios'
 
 const ServerUrl = "https://notesapp-mbls.onrender.com"
