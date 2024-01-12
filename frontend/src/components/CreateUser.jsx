@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const ServerUrl = "https://notesapp-mbls.onrender.com"
+const ServerUrl = "https://notesapp-5rdm.onrender.com"
 
 export default function CreateUser(){
 

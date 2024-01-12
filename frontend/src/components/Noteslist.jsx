@@ -3,7 +3,7 @@ import axios from 'axios'
 import { format } from 'timeago.js'
 import { Link } from 'react-router-dom'
 
-const ServerUrl = "https://notesapp-mbls.onrender.com"
+const ServerUrl = "https://notesapp-5rdm.onrender.com"
 
 export default function Noteslist() {
 
